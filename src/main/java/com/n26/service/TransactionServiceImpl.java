@@ -20,7 +20,7 @@ public class TransactionServiceImpl implements TransactionService {
 	private StatsService statsService;
 
 	@Override
-	public void addTransaction(Transaction tx) {
+	public void addTransaction(Transaction tx) throws UnparsableTxException, ExpireTxException {
 		// TODO Auto-generated method stub
 		Instant instant = Instant.now();
 		if (tx.getTimestamp() - instant.toEpochMilli() > 0) {

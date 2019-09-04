@@ -29,4 +29,22 @@ public class Transaction {
 	public Boolean isValid(Long validityPeriod) {
 		return Instant.now().toEpochMilli() - timestamp <= validityPeriod;
 	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+	
+	
 }
