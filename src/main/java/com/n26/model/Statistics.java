@@ -6,11 +6,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.n26.util.BigDecimalSerializer;
 import com.n26.util.StatsCollector;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class Statistics {
 

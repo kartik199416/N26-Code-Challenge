@@ -6,12 +6,11 @@ import java.util.function.BinaryOperator;
 import com.n26.model.Transaction;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+//@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class StatsCollector {
@@ -21,7 +20,6 @@ public class StatsCollector {
 	public static final StatsCollector EMPTY_STATS = new StatsCollector();
 
 	private @Getter BigDecimal sum = BigDecimal.ZERO;
-	// private @Getter BigDecimal avg = BigDecimal.ZERO;
 	private @Getter BigDecimal max = BigDecimal.ZERO;
 	private @Getter BigDecimal min = BigDecimal.ZERO;
 	private @Getter long count = 0L;
