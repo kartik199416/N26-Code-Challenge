@@ -23,10 +23,10 @@ public class TransactionServiceImpl implements TransactionService {
 	public void addTransaction(Transaction tx) {
 		// TODO Auto-generated method stub
 		Instant instant = Instant.now();
-		if (tx.getTimeStamp() - instant.toEpochMilli() > 0) {
+		if (tx.getTimestamp() - instant.toEpochMilli() > 0) {
 			throw new UnparsableTxException();
 		}
-		if (tx.getTimeStamp() - instant.minusSeconds(expireInterval).toEpochMilli() < 0) {
+		if (tx.getTimestamp() - instant.minusSeconds(expireInterval).toEpochMilli() < 0) {
 			throw new ExpireTxException();
 		}
 		statsService.register(tx);
