@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 //@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+//@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class StatsCollector {
 
@@ -46,7 +46,7 @@ public class StatsCollector {
 
 		return new StatsCollector(prev.getSum().add(next.getSum()), prev.getCount() + next.getCount(),
 				prev.getMax().compareTo(next.getMax()) == 1 ? prev.getMax() : next.getMax(),
-				prev.getMin().compareTo(next.getMin()) == 1 ? next.getMin() : prev.getMin(),
+				(prev.getCount() == 0 || prev.getMin().compareTo(next.getMin()) == 1 ) ? next.getMin() : prev.getMin(),
 				prev.getTimestamp() < next.getTimestamp() ? prev.getTimestamp() : next.getTimestamp());
 	};
 

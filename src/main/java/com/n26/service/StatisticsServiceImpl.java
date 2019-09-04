@@ -53,7 +53,7 @@ public class StatisticsServiceImpl implements StatsService {
 				.filter(s -> epochMilli - s.getTimestamp() < StatsCollector.SPAN_MS * StatsCollector.COUNT)
 				.reduce(StatsCollector.EMPTY_STATS, StatsCollector.reducer);
 				
-		return null;
+		return Statistics.from(sc);
 	}
 
 	@Override
