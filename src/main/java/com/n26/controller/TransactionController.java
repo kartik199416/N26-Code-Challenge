@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.n26.entity.Transaction;
+import com.n26.model.Transaction;
 import com.n26.service.TransactionService;
 
 /**
@@ -40,5 +41,11 @@ public class TransactionController {
 		transactionService.addTransaction(transaction);
 
 		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping()
+	public ResponseEntity<Void> delete(){
+		transactionService.deleteTransaction();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
