@@ -9,11 +9,13 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import com.n26.model.Statistics;
 import com.n26.model.Transaction;
 import com.n26.util.StatsCollector;
 
+@Service
 public class StatisticsServiceImpl implements StatsService {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
