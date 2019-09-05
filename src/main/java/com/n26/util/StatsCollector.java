@@ -5,9 +5,7 @@ import java.util.function.BinaryOperator;
 
 import com.n26.model.Transaction;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 //@AllArgsConstructor(access = AccessLevel.PRIVATE)

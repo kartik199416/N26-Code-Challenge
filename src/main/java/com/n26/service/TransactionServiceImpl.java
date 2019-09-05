@@ -23,7 +23,6 @@ public class TransactionServiceImpl implements TransactionService {
 	public void addTransaction(Transaction tx) throws UnparsableTxException, ExpireTxException {
 		// TODO Auto-generated method stub
 		Instant instant = Instant.now();
-		long t = instant.toEpochMilli();
 		if (tx.getTimestamp() - instant.toEpochMilli() > 0) {
 			throw new UnparsableTxException();
 		}

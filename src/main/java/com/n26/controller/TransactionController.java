@@ -4,17 +4,18 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.converter.*;
-import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.n26.exception.ExpireTxException;
 import com.n26.exception.UnparsableTxException;
 import com.n26.model.Transaction;
@@ -57,9 +58,14 @@ public class TransactionController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-  @ExceptionHandler({InvalidDefinitionException.class,JsonMappingException.class})
+	@ExceptionHandler({ InvalidDefinitionException.class, JsonMappingException.class })
 	public ResponseEntity<Void> handleJacksonMapping() {
 		return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 	}
-	
+
+	@ExceptionHandler({ MismatchedInputException.class })
+	public ResponseEntity<Void> handleJacksonMismatchMapping() {
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
+
 }
