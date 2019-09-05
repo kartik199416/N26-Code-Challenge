@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.n26.model.Statistics;
-import com.n26.service.StatsService;
+import com.n26.service.StatisticsService;
 
 @RestController
 public class StatsController {
 	
 	@Autowired
-	private StatsService statsService;
+	private StatisticsService statsService;
 
 	@GetMapping("/statistics")
 	public Statistics getStatsSummary() {

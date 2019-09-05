@@ -14,7 +14,7 @@ import com.n26.model.Transaction;
 import com.n26.util.StatsCollector;
 
 @Service
-public class StatisticsServiceImpl implements StatsService {
+public class StatisticsServiceImpl implements StatisticsService {
 	
 	private AtomicReferenceArray<StatsCollector> statsCollector;
 	
@@ -41,7 +41,7 @@ public class StatisticsServiceImpl implements StatsService {
 	}
 	
 
-	private Statistics getStatistics(long epochMilli) {
+	Statistics getStatistics(long epochMilli) {
 		// TODO Auto-generated method stub
 		StatsCollector sc = IntStream.range(0, StatsCollector.COUNT)
 				.mapToObj(statsCollector::get)

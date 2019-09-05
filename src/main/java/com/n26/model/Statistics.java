@@ -27,7 +27,7 @@ public class Statistics {
 
 	private @Getter long count;
 
-	private Statistics(BigDecimal sum, BigDecimal avg, BigDecimal max, BigDecimal min, long count) {
+	public Statistics(BigDecimal sum, BigDecimal avg, BigDecimal max, BigDecimal min, long count) {
 		super();
 		this.sum = sum;
 		this.avg = avg;

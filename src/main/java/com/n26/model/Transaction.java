@@ -26,6 +26,11 @@ public class Transaction {
 		this.timestamp = Instant.parse(date).toEpochMilli();
 	}
 
+	public Transaction(BigDecimal amt, long ts) {
+		this.amount = amt;
+		this.timestamp = ts;
+	}
+
 	public Boolean isValid(Long validityPeriod) {
 		return Instant.now().toEpochMilli() - timestamp <= validityPeriod;
 	}
@@ -37,5 +42,5 @@ public class Transaction {
 	public long getTimestamp() {
 		return timestamp;
 	}
-	
+
 }

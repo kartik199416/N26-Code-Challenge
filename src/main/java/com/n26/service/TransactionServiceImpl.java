@@ -17,7 +17,7 @@ public class TransactionServiceImpl implements TransactionService {
 	private long expireInterval;
 
 	@Autowired
-	private StatsService statsService;
+	private StatisticsService statisticsService;
 
 	@Override
 	public void addTransaction(Transaction tx) throws UnparsableTxException, ExpireTxException {
@@ -29,14 +29,18 @@ public class TransactionServiceImpl implements TransactionService {
 		if (tx.getTimestamp() - instant.minusSeconds(expireInterval).toEpochMilli() < 0) {
 			throw new ExpireTxException();
 		}
-		statsService.register(tx);
+		statisticsService.register(tx);
 
 	}
 
 	@Override
 	public void deleteTransaction() {
 		// TODO Auto-generated method stub
-		statsService.clearStatistics();
+		statisticsService.clearStatistics();
+	}
+
+	public long getExpireAfterSeconds() {
+		return expireInterval;
 	}
 
 }
